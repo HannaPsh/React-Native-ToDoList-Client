@@ -1,15 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-/* import { Icon } from 'react-native-vector-icons/Icon'; */
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const ListItem = ({ item, deleteItem, moveItemDown }) => {
+const Done = ({ item, deleteItem, moveItemUp }) => {
   return (
-    item.status == 'TODO' && (
+    item.status == 'DONE' && (
       <TouchableOpacity style={styles.listItem}>
         <View style={styles.listItemView}>
           <Text style={styles.listItemText}>{item.text}</Text>
-
           <View style={styles.icons}>
             <Icon
               name="remove"
@@ -18,10 +16,10 @@ const ListItem = ({ item, deleteItem, moveItemDown }) => {
               onPress={() => deleteItem(item.id)}
             />
             <Icon
-              name="angle-double-down"
+              name="angle-double-up"
               size={20}
               color="blue"
-              onPress={() => moveItemDown(item.id)}
+              onPress={() => moveItemUp(item.id)}
             />
           </View>
         </View>
@@ -29,7 +27,7 @@ const ListItem = ({ item, deleteItem, moveItemDown }) => {
     )
   );
 };
-export default ListItem;
+export default Done;
 const styles = StyleSheet.create({
   listItem: {
     padding: 15,

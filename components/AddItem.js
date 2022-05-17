@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     height: 60,
     padding: 8,
     margin: 5,
+    backgroundColor: 'pink',
   },
   btn: {
     backgroundColor: '#c2bad8',
