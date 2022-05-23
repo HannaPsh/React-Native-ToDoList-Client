@@ -7,19 +7,21 @@ const Done = ({ item, deleteItem, moveItemUp }) => {
     item.status == 'DONE' && (
       <TouchableOpacity style={styles.listItem}>
         <View style={styles.listItemView}>
-          <Text style={styles.listItemText}>{item.text}</Text>
+          <Text style={styles.listItemText}>{item.title}</Text>
           <View style={styles.icons}>
             <Icon
+              style={styles.removeBtn}
               name="remove"
-              size={20}
-              color="firebrick"
-              onPress={() => deleteItem(item.id)}
+              size={30}
+              color="white"
+              onPress={() => deleteItem(item._id)}
             />
             <Icon
+              style={styles.upBtn}
               name="angle-double-up"
-              size={20}
-              color="blue"
-              onPress={() => moveItemUp(item.id)}
+              size={30}
+              color="white"
+              onPress={() => moveItemUp(item._id)}
             />
           </View>
         </View>
@@ -30,21 +32,35 @@ const Done = ({ item, deleteItem, moveItemUp }) => {
 export default Done;
 const styles = StyleSheet.create({
   listItem: {
-    padding: 15,
+    padding: 10,
     backgroundColor: '#f8f8f8',
     borderBottomWidth: 1,
-    borderColor: '#eee',
+    borderColor: 'black',
   },
   listItemView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
   },
   listItemText: {
+    width: '80%',
     fontSize: 18,
   },
   icons: {
+    width: '20%',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+  },
+  removeBtn: {
+    textAlign: 'center',
+    alignSelf: 'center',
+    backgroundColor: 'black',
+    width: '50%',
+    borderRadius: 50,
+  },
+  upBtn: {
+    textAlign: 'center',
+    alignSelf: 'center',
+    backgroundColor: 'black',
+    width: '50%',
+    borderRadius: 50,
   },
 });

@@ -18,10 +18,12 @@ export default Search;
 
 const styles = StyleSheet.create({
   input: {
+    alignSelf: 'flex-start',
     width: 300,
-    height: 60,
+    height: 30,
     padding: 8,
     margin: 5,
     backgroundColor: 'white',
+    borderRadius: 30,
   },
 });

@@ -15,33 +15,34 @@ const AddItem = ({ addItem }) => {
   };
 
   return (
-    <View>
+    <View style={styles.main}>
       <TextInput
         placeholder="Add Item..."
         style={styles.input}
         onChangeText={onChange}
       />
       <TouchableOpacity style={styles.btn} onPress={() => addItem(text)}>
-        <Text style={styles.btnText}>
-          <Icon name="plus" size={20} />
-          Add Task
-        </Text>
+        <Icon name="plus" size={20} color="white" />
       </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  main: {
+    flexDirection: 'row',
+  },
   input: {
-    height: 60,
-    padding: 8,
-    margin: 5,
-    backgroundColor: 'pink',
+    width: '80%',
+    height: 40,
+    padding: 6,
+    margin: 3,
+    backgroundColor: 'white',
   },
   btn: {
-    backgroundColor: '#c2bad8',
-    padding: 9,
-    margin: 5,
+    backgroundColor: 'blue',
+    padding: 15,
+    margin: 3,
   },
   btnText: {
     color: 'darkslateblue',

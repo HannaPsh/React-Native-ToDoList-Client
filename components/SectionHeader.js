@@ -1,22 +1,24 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const SectionHeader = ({ title }) => {
+const SectionHeader = ({ title, number }) => {
   return (
     <View style={styles.header}>
-      <Text style={styles.headerText}>{title}</Text>
+      <Text style={styles.headerText}>
+        {title} ({number})
+      </Text>
     </View>
   );
 };
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: 'blue',
+    backgroundColor: 'black',
     height: 30,
-    padding: 5,
+    padding: 0,
   },
   headerText: {
     color: 'white',
-    fontSize: 17,
+    fontSize: 15,
     textAlign: 'center',
   },
 });

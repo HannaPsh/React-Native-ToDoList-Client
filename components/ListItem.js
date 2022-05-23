@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-/* import { Icon } from 'react-native-vector-icons/Icon'; */
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ListItem = ({ item, deleteItem, moveItemDown }) => {
@@ -8,20 +7,22 @@ const ListItem = ({ item, deleteItem, moveItemDown }) => {
     item.status == 'TODO' && (
       <TouchableOpacity style={styles.listItem}>
         <View style={styles.listItemView}>
-          <Text style={styles.listItemText}>{item.text}</Text>
+          <Text style={styles.listItemText}>{item.title}</Text>
 
           <View style={styles.icons}>
             <Icon
+              style={styles.removeBtn}
               name="remove"
-              size={20}
-              color="firebrick"
-              onPress={() => deleteItem(item.id)}
+              size={30}
+              color="white"
+              onPress={() => deleteItem(item._id)}
             />
             <Icon
+              style={styles.downBtn}
               name="angle-double-down"
-              size={20}
-              color="blue"
-              onPress={() => moveItemDown(item.id)}
+              size={30}
+              color="white"
+              onPress={() => moveItemDown(item._id)}
             />
           </View>
         </View>
@@ -32,21 +33,34 @@ const ListItem = ({ item, deleteItem, moveItemDown }) => {
 export default ListItem;
 const styles = StyleSheet.create({
   listItem: {
-    padding: 15,
+    padding: 10,
     backgroundColor: '#f8f8f8',
     borderBottomWidth: 1,
-    borderColor: '#eee',
+    borderColor: 'black',
   },
   listItemView: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
   listItemText: {
+    width: '80%',
     fontSize: 18,
   },
   icons: {
+    width: '20%',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+  },
+  removeBtn: {
+    textAlign: 'center',
+    alignSelf: 'center',
+    backgroundColor: 'black',
+    width: '50%',
+    borderRadius: 50,
+  },
+  downBtn: {
+    textAlign: 'center',
+    alignSelf: 'center',
+    backgroundColor: 'black',
+    width: '50%',
+    borderRadius: 50,
   },
 });
