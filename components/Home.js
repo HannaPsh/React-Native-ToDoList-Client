@@ -23,32 +23,29 @@ const Home = ({ navigation }) => {
   const [search, setSearch] = useState('');
 
   function fetchData() {
-    fetch('http://192.168.1.150:5000/tasks/')
+    fetch('http://localhost:5000/tasks/')
       .then((response) => response.json())
       .then((json) => setData(json))
-      .catch((error) =>
-        console.error(error)
-      ) /* Base64 react native should be installed och import */
+      .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }
-  console.log(data);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [data]);
 
   const deleteItem = (id) => {
-    fetch('http://192.168.1.150:5000/tasks/' + id, {
+    fetch('http://localhost:5000/tasks/' + id, {
       method: 'DELETE',
     });
-    fetchData();
+    /*    fetchData(); */
   };
 
   const addItem = (text) => {
     if (!text) {
       Alert.alert('Error', 'Enter an item', [{ text: 'OK' }]);
     } else {
-      fetch('http://192.168.1.150:5000/tasks/', {
+      fetch('http://localhost:5000/tasks/', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -59,7 +56,7 @@ const Home = ({ navigation }) => {
           status: 'TODO',
         }),
       });
-      fetchData();
+      /*  fetchData(); */
     }
   };
   const moveItemDown = (id) => {
@@ -67,20 +64,19 @@ const Home = ({ navigation }) => {
       data.map((item) => {
         if (item._id == id) {
           if (item.status == 'TODO') {
-            fetch('http://192.168.1.150:5000/tasks/' + id, {
+            fetch('http://localhost:5000/tasks/' + id, {
               method: 'PATCH',
               headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                /* stringify (base64.encode('pwd' + password)) */
                 status: 'INPROCESS',
               }),
             });
             fetchData();
           } else if (item.status == 'INPROCESS') {
-            fetch('http://192.168.1.150:5000/tasks/' + id, {
+            fetch('http://localhost:5000/tasks/' + id, {
               method: 'PATCH',
               headers: {
                 Accept: 'application/json',
@@ -90,12 +86,11 @@ const Home = ({ navigation }) => {
                 status: 'DONE',
               }),
             });
-            fetchData();
+            /* fetchData(); */
           }
           return item;
         }
       });
-      console.log(data);
       return data.filter((item) => item);
     });
     return data;
@@ -105,7 +100,7 @@ const Home = ({ navigation }) => {
       data.map((item) => {
         if (item._id == id) {
           if (item.status == 'INPROCESS') {
-            fetch('http://192.168.1.150:5000/tasks/' + id, {
+            fetch('http://localhost:5000/tasks/' + id, {
               method: 'PATCH',
               headers: {
                 Accept: 'application/json',
@@ -117,7 +112,7 @@ const Home = ({ navigation }) => {
             });
             fetchData();
           } else if (item.status == 'DONE') {
-            fetch('http://192.168.1.150:5000/tasks/' + id, {
+            fetch('http://localhost:5000/tasks/' + id, {
               method: 'PATCH',
               headers: {
                 Accept: 'application/json',
@@ -127,7 +122,7 @@ const Home = ({ navigation }) => {
                 status: 'INPROCESS',
               }),
             });
-            fetchData();
+            /*  fetchData(); */
           }
           return item;
         }

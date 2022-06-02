@@ -23,12 +23,10 @@ const All = ({ navigation }) => {
   const [search, setSearch] = useState('');
 
   function fetchData() {
-    fetch('http://192.168.1.150:5000/tasks/')
+    fetch('http://localhost:5000/tasks/')
       .then((response) => response.json())
       .then((json) => setData(json))
-      .catch((error) =>
-        console.error(error)
-      ) /* Base64 react native should be installed och import */
+      .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }
   console.log(data);

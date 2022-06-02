@@ -17,7 +17,7 @@ const AllDone = ({ navigation }) => {
   const [search, setSearch] = useState('');
 
   function fetchData() {
-    fetch('http://192.168.1.150:5000/tasks/')
+    fetch('http://localhost:5000/tasks/')
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) =>
